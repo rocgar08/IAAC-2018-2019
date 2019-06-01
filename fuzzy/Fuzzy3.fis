@@ -1,0 +1,54 @@
+[System]
+Name='Fuzzy3'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=8
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[0 1]
+NumMFs=3
+MF1='negativo':'trimf',[-0.414054497354497 0.00264550264550267 0.419345502645503]
+MF2='intermedio':'trimf',[0.0833 0.5 0.9167]
+MF3='positivo':'trimf',[0.5832 1 1.417]
+
+[Input2]
+Name='cambio-error'
+Range=[0 1]
+NumMFs=3
+MF1='negativo':'trimf',[-0.4167 0 0.4167]
+MF2='intermedio':'trimf',[0.0833 0.5 0.9167]
+MF3='positivo':'trimf',[0.5832 1 1.417]
+
+[Input3]
+Name='integra'
+Range=[0 1]
+NumMFs=3
+MF1='negativo':'trimf',[-0.4167 0 0.4167]
+MF2='intermedio':'trimf',[0.0833 0.5 0.9167]
+MF3='positivo':'trimf',[0.5832 1 1.417]
+
+[Output1]
+Name='control'
+Range=[0 1]
+NumMFs=3
+MF1='negativo':'trapmf',[-0.375 -0.04167 0.04167 0.375]
+MF2='intermedio':'trapmf',[0.125 0.4583 0.5417 0.875]
+MF3='positivo':'trapmf',[0.625 0.9583 1.042 1.375]
+
+[Rules]
+1 1 1, 1 (1) : 1
+1 3 1, 1 (1) : 1
+1 1 3, 1 (1) : 1
+1 3 3, 2 (1) : 1
+3 1 1, 2 (1) : 1
+3 3 1, 3 (1) : 1
+3 1 3, 3 (1) : 1
+3 3 3, 3 (1) : 1
